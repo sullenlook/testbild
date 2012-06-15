@@ -23,11 +23,11 @@ class testbild(Plugin):
 
         @register("de-DE", res['testbild']['de-DE'])
         def testbild(self, speech, language):
-                html = urllib.urlopen("http://46.51.141.123/SiriServerCore/plugins/testbild/testbild.jpg")
+                html = urllib.urlopen("http://sullenlook.eu/Pix/cydia/info/test$
                 soup = BeautifulSoup(html)
                 ImageURL = "./plugins/testbild/testbild.jpg"
                 view = AddViews(self.refId, dialogPhase="Completion")
-                ImageAnswer = AnswerObject(title="testbild:",lines=[AnswerObjectLine(image=ImageURL)])
+                ImageAnswer = AnswerObject(title="testbild:",lines=[AnswerObjec$
                 view1 = AnswerSnippet(answers=[ImageAnswer])
                 view.views = [view1]
                 self.sendRequestWithoutAnswer(view)
