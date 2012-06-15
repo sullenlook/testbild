@@ -15,19 +15,22 @@ from siriObjects.answerObjects import AnswerSnippet, AnswerObject, AnswerObjectL
 
 class testbild(Plugin):
 
-from BeautifulSoup import BeautifulSoup
-from siriObjects.baseObjects import AceObject, ClientBoundCommand
-from siriObjects.uiObjects import AddViews, AssistantUtteranceView
-from siriObjects.answerObjects import AnswerSnippet, AnswerObject, AnswerObjectLine
+        res = {
+                'testbild': {
+                        'de-DE': '.*Testbild.*',
+                }
+        }
 
-class testbild(Plugin):
-
-        @register("de-DE",".*Testbild.*")
+        @register("de-DE", res['testbild']['de-DE'])
         def testbild(self, speech, language):
+                html = urllib.urlopen("http://46.51.141.123/SiriServerCore/plugins/testbild/testbild.jpg")
+                soup = BeautifulSoup(html)
                 ImageURL = "./plugins/testbild/testbild.jpg"
                 view = AddViews(self.refId, dialogPhase="Completion")
-                ImageAnswer = AnswerObject(title="SullenLook",lines=[AnswerObjectLine(image=ImageURL)])
+                ImageAnswer = AnswerObject(title="testbild:",lines=[AnswerObjectLine(image=ImageURL)])
                 view1 = AnswerSnippet(answers=[ImageAnswer])
+                view.views = [view1]
                 self.sendRequestWithoutAnswer(view)
                 self.complete_request()
+
 
