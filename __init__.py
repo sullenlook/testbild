@@ -15,20 +15,19 @@ from siriObjects.answerObjects import AnswerSnippet, AnswerObject, AnswerObjectL
 
 class testbild(Plugin):
 
-	@register("de-DE", "Testbild")
-	def testbild(self, speech, language):
-		ImageURL = http://sullenlook.eu/Pix/Avatar.gif
-		ImageAnswer = AnswerObject(title="SullenLook",lines=[AnswerObjectLine(image=ImageURL)])
-		view1 = AnswerSnippet(answers=[ImageAnswer])
-		view.views = [view1]
-		self.sendRequestWithoutAnswer(view)
-		self.complete_request()
+from BeautifulSoup import BeautifulSoup
+from siriObjects.baseObjects import AceObject, ClientBoundCommand
+from siriObjects.uiObjects import AddViews, AssistantUtteranceView
+from siriObjects.answerObjects import AnswerSnippet, AnswerObject, AnswerObjectLine
 
-	@register("de-DE", "Testbild 2")
-	def testbild(self, speech, language):
-		ImageURL = http://sullenlook.eu/Pix/cydia/1.png
-		ImageAnswer = AnswerObject(title="SullenLook",lines=[AnswerObjectLine(image=ImageURL)])
-		view1 = AnswerSnippet(answers=[ImageAnswer])
-		view.views = [view1]
-		self.sendRequestWithoutAnswer(view)
-		self.complete_request()
+class testbild(Plugin):
+
+        @register("de-DE",".*Testbild.*")
+        def testbild(self, speech, language):
+                ImageURL = "./plugins/testbild/testbild.jpg"
+                view = AddViews(self.refId, dialogPhase="Completion")
+                ImageAnswer = AnswerObject(title="SullenLook",lines=[AnswerObjectLine(image=ImageURL)])
+                view1 = AnswerSnippet(answers=[ImageAnswer])
+                self.sendRequestWithoutAnswer(view)
+                self.complete_request()
+
