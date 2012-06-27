@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-#author: SullenLook sullen look@sullenlook.eu
+#author: SullenLook sullenlook@sullenlook.eu
 #project: SiriServer plugin
 #Testbild plugin
 
@@ -17,20 +17,17 @@ class testbild(Plugin):
 
         res = {
                 'testbild': {
-                        'de-DE': '.*Testbild.*',
+                        'de-DE': '.*Testbild.*|.*Test .*bild.*',
                 }
         }
 
         @register("de-DE", res['testbild']['de-DE'])
         def testbild(self, speech, language):
-                html = urllib.urlopen("http://sullenlook.eu/Pix/cydia/info/testbild.png")
+                html = urllib.urlopen("http://sullenlook.eu/Pix/cydia/info/testbild.png/")
                 soup = BeautifulSoup(html)
-                ImageURL = "./plugins/testbild/testbild.png"
+                ImageURL = "http://sullenlook.eu/Pix/cydia/info/testbild.png/"
                 view = AddViews(self.refId, dialogPhase="Completion")
-                ImageAnswer = AnswerObject(title="testbild:",lines=[AnswerObjectLine(image=ImageURL)])
+                ImageAnswer = AnswerObject(title=str("Testbild"),lines=[AnswerObjectLine(image="http://sullenlook.eu/Pix/cydia/info/testbild.png")])
                 view1 = AnswerSnippet(answers=[ImageAnswer])
                 view.views = [view1]
                 self.sendRequestWithoutAnswer(view)
-                self.complete_request()
-
-

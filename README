@@ -1,4 +1,14 @@
-ich möchte mit einem Befehl ein Bild, entweder aus dem /plugin/ ordner oder von einer beliebigen url öffnen.
-weiss bloss nicht wie habs mal so versucht, weiss aber nicht ob es der richtige weg ist...
+TESTBILD PLUGIN IN DEUTSCH
 
-not working
+
+Einfaches Beispiel wie man ein Bild von einem url einbildet.
+Sag "Testbild" und Siri öffnet das Testbild.
+
+
+So installierst Du dieses Plugin: 
+
+# 1: Lade den "testbild" ordner in ~/SiriServerCore/plugins/ 
+
+# 2: Fügen Sie "testbild" in plugins.conf ein
+
+FERTIG
